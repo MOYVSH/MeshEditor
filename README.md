@@ -1,2 +1,2 @@
-# LuaAndMesh
+# MeshEditor
 Create a HexMap
