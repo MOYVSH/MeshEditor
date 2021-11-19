@@ -8,23 +8,8 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.ShortcutManagement;
 using UnityEditor.EditorTools;
-
 using HEX;
 
-[EditorTool("HexEditorTool3")]
-public class HexEditorTool3 : EditorTool
-{
-    public override void OnToolGUI(EditorWindow window)
-    {
-        // hook mouse input.
-        int controlId = GUIUtility.GetControlID(GetHashCode(), FocusType.Passive);
-        if (Event.current.type == EventType.Layout)
-            HandleUtility.AddDefaultControl(controlId);
-        if (Event.current.type == EventType.DragPerform)
-            HandleUtility.AddDefaultControl(controlId);
-        HandleUtility.Repaint();
-    }
-}
 public class HexEditor3 : EditorWindow
 {
     [MenuItem("MyTool/HexEditor3")]
@@ -100,7 +85,7 @@ public class HexEditor3 : EditorWindow
         {
             if (e.keyCode == KeyCode.G)
             {
-                ToolManager.SetActiveTool(typeof(HexEditorTool3));
+                ToolManager.SetActiveTool(typeof(HexEditorTool));
             }
         }
         if (hexData == null)

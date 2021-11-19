@@ -7,19 +7,6 @@ using HEX;
 using System;
 using System.Linq;
 
-public class HexEditorTool : EditorTool
-{
-    public override void OnToolGUI(EditorWindow window)
-    {
-        // hook mouse input.
-        int controlId = GUIUtility.GetControlID(GetHashCode(), FocusType.Passive);
-        if (Event.current.type == EventType.Layout)
-            HandleUtility.AddDefaultControl(controlId);
-        if (Event.current.type == EventType.DragPerform)
-            HandleUtility.AddDefaultControl(controlId);
-        HandleUtility.Repaint();
-    }
-}
 public class HexEditor : EditorWindow
 {
     [MenuItem("MyTool/HexEditor")]
@@ -38,7 +25,7 @@ public class HexEditor : EditorWindow
         get
         {
             if (!hexDraw_)
-             hexDraw_ = ((GameObject)obj).GetComponent<DrawHex>();
+                hexDraw_ = ((GameObject)obj).GetComponent<DrawHex>();
             return hexDraw_;
         }
     }
@@ -74,7 +61,7 @@ public class HexEditor : EditorWindow
     {
         if (UnityEditor.Tools.current != Tool.Custom)
             EditorGUILayout.HelpBox("Add GameObject for edit", MessageType.Warning);
-        
+
         EditorGUILayout.BeginVertical();
         obj = EditorGUILayout.ObjectField("Object", obj, typeof(UnityEngine.Object));
         OffsetHeight = EditorGUILayout.DelayedFloatField("OffsetHeight", OffsetHeight);
@@ -168,7 +155,7 @@ public class HexEditor : EditorWindow
                         hexDraw.RefreshTerrain();
                         hexDraw.ReDrawMeshInScent();
                     }
-                    
+
                 }
             }
         }
@@ -181,7 +168,7 @@ public class HexEditor : EditorWindow
         var cell = hexDraw.getCell(pos);
         if (cell == null)
             return;
-        var labelPos =new Vector3(1.5f,0,-1.5f);
+        var labelPos = new Vector3(1.5f, 0, -1.5f);
         Handles.Label(labelPos, getCellInfoContent(pos), GUI.skin.GetStyle("Tooltip"));
     }
     string getCellInfoContent(HexAxial pos)
